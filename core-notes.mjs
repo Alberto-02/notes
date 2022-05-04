@@ -31,13 +31,16 @@ const addNote = function (title, body) {
 }
 
 const removeNote = function (title) {
-    const notes = [];
-    const notesToKeep = [];
+    const notes = loadNotes();
+    const noteDelete = findNote(notes, title);
+    
 
-    if (true) {
-        //
+    if (noteDelete) {
+        
+        const notesToKeep = notes.filter(note => note != noteDelete);
+        saveNotes(notesToKeep);
     } else {
-        //
+        errorHelper();
     }
 }
 
@@ -55,13 +58,13 @@ const listNotes = function () {
 }
 
 const readNote = function (title) {
-    const notes = [];
+    const notes = loadNotes();
     const noteExist = findNote(notes, title);
 
     if (noteExist) {
-        //
+        displayNote(noteExist);
     } else {
-        //
+        errorHelper();
     }
 }
 
@@ -80,6 +83,7 @@ const loadNotes = function () {
         return []
     }
 }
+
 
 export {
     addNote,

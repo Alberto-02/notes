@@ -47,7 +47,7 @@ yarg.command({
         }
     },
     handler(argv) {
-        console.log('rimuovi una nota');
+        console.removeNote(argv.title);
     }
 })
 
@@ -62,7 +62,7 @@ yarg.command({
         }
     },
     handler(argv) {
-        console.log('leggi una nota');
+        core.readNote(argv.title);
     }
 })
 
